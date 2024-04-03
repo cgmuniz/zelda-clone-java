@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import com.cgmuniz.entities.Entity;
 import com.cgmuniz.entities.Player;
 import com.cgmuniz.graficos.Spritesheet;
+import com.cgmuniz.world.World;
 
 public class Game extends Canvas implements Runnable, KeyListener{
 	
@@ -23,17 +24,17 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public static JFrame frame;
 	private Thread thread;
 	private boolean isRunning = false;
-	private final int WIDTH = 240;
-	private final int HEIGHT = 160;
+	public static final int WIDTH = 240;
+	public static final int HEIGHT = 160;
 	private final int SCALE = 3;
 	
 	private BufferedImage image;
 	
-	public List<Entity> entities;
+	public static List<Entity> entities;
+	public static Spritesheet spritesheet;
+	public static Player player;
 	
-	public Spritesheet spritesheet;
-	
-	private Player player;
+	public static World world;
 	
 	public Game() {
 		addKeyListener(this);
@@ -49,6 +50,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		player = new Player(0, 0, 16, 16, spritesheet.getSprite(32, 0, 16, 16));
 		
 		entities.add(player);
+		
+		world = new World("/map.png");
 	}
 	
 	public void initFrame() {
@@ -98,6 +101,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		Graphics g = image.getGraphics();
 		g.setColor(new Color(0,0,0));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		world.render(g);
 		
 		for(int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
