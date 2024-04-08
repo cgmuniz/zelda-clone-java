@@ -3,6 +3,7 @@ package com.cgmuniz.main;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,6 +20,7 @@ import com.cgmuniz.entities.Entity;
 import com.cgmuniz.entities.Player;
 import com.cgmuniz.graficos.Spritesheet;
 import com.cgmuniz.graficos.UI;
+import com.cgmuniz.world.Camera;
 import com.cgmuniz.world.World;
 
 public class Game extends Canvas implements Runnable, KeyListener{
@@ -128,6 +130,14 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH*SCALE, HEIGHT*SCALE, null);
+		g.setFont(new Font("arial", Font.BOLD, 30));
+		
+		g.setColor(Color.white);
+		
+		g.drawString((int) player.life + "/" + (int) player.maxLife, 21*SCALE, 15*SCALE);
+		g.drawString(""+player.ammo, 215*SCALE, 15*SCALE);
+		g.drawImage(Entity.BULLET_EN, 200*SCALE, 10, 16*SCALE, 16*SCALE, null);
+		
 		bs.show();
 	}
 
