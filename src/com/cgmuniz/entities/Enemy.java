@@ -1,6 +1,5 @@
 package com.cgmuniz.entities;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -22,8 +21,8 @@ public class Enemy extends Entity {
 		super(x, y, width, height, null);
 		
 		sprites = new BufferedImage[2];
-		sprites[0] = Game.spritesheet.getSprite(7 * 16, 16, 16, 16);
-		sprites[1] = Game.spritesheet.getSprite(8 * 16, 16, 16, 16);
+		sprites[0] = ENEMY_EN;
+		sprites[1] = ENEMY_EN2;
 	}
 	
 	public void tick() {	

@@ -20,7 +20,6 @@ import com.cgmuniz.entities.Entity;
 import com.cgmuniz.entities.Player;
 import com.cgmuniz.graficos.Spritesheet;
 import com.cgmuniz.graficos.UI;
-import com.cgmuniz.world.Camera;
 import com.cgmuniz.world.World;
 
 public class Game extends Canvas implements Runnable, KeyListener{
